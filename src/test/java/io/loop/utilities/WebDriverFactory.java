@@ -1,4 +1,4 @@
-package io.loop.utilitiz;
+package io.loop.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

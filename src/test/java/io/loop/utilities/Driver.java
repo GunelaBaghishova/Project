@@ -1,4 +1,4 @@
-package io.loop.utilitiz;
+package io.loop.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -57,7 +57,7 @@ public class Driver {
      * @author G.B
      */
     public static void closeDriver (){
-        if(driver !=null){
+        if(driver!=null){
             driver.quit();
             driver = null;
         }
