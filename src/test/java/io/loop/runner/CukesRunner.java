@@ -14,7 +14,5 @@ import org.junit.runner.RunWith;
         tags = "@smoke",
         monochrome = true
 )
-
-
 public class CukesRunner {
 }

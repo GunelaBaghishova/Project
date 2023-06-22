@@ -25,10 +25,10 @@ Feature: Docuport Login Logout Features
     And user clicks login button
     Then user should see the home page for advisor
 
-
-  Scenario: Login as an admin
-    When user enters username for admin
-    And user enters password for admin
+  @smoke
+  Scenario: Login as an supervisor
+    When user enters username for supervisor
+    And user enters password for supervisor
     And user clicks login button
-    Then user should see the home page for admin
+    Then user should see the home page for supervisor
 
