@@ -1,11 +1,13 @@
 package io.loop.step_definitions;
 import io.cucumber.java.en.*;
-import io.cucumber.java.eo.Do;
 import io.loop.pages.LoginPage;
 import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
+
+import java.util.Map;
+
 public class LoginStepDefs {
     LoginPage loginPage = new LoginPage();
  @Given("user is on Docuport login page")
@@ -14,7 +16,7 @@ public class LoginStepDefs {
  }
     @When("user enters username for client")
     public void user_enters_username_for_client() {
-        loginPage.loginInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
  }
     @When("user enters password for client")
     public void user_enters_password_for_client() {
@@ -31,7 +33,7 @@ public class LoginStepDefs {
      @When("user enters username for employee")
     public void user_enters_username_for_employee() {
        BrowserUtils.waitForClickable(loginPage.loginButton,10);
-      loginPage.loginInput.sendKeys(DocuportConstants.USERNAME_EMPLOYEE);
+      loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_EMPLOYEE);
     }
     @When("user enters password for employee")
     public void user_enters_password_for_employee() {
@@ -43,7 +45,7 @@ public class LoginStepDefs {
  }
     @When("user enters username for advisor")
     public void user_enters_username_for_advisor() {
-      loginPage.loginInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
+      loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
     }
     @When("user enters password for advisor")
     public void user_enters_password_for_advisor() {
@@ -55,7 +57,7 @@ public class LoginStepDefs {
     }
     @When("user enters username for supervisor")
    public void user_enters_username_for_supervisor() {
-        loginPage.loginInput.sendKeys(DocuportConstants.USERNAME_SUPERVISOR);
+        loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_SUPERVISOR);
  }
    @When("user enters password for supervisor")
    public void user_enters_password_for_supervisor() {
@@ -67,8 +69,18 @@ public class LoginStepDefs {
 
    }
 
+    @When("user enters credentials")
+    public void user_enters_credentials(Map<String, String> credentials) {
+        for (Map.Entry<String, String> entry : credentials.entrySet()) {
+            String key = entry.getKey();
+            System.out.println("key = " + key);
+            String value = entry.getValue();
+            System.out.println("value = " + value);
+            System.out.println("===================");
+        }
+  loginPage.loginDocuport(credentials.get("username"),credentials.get("password"));
 
-
+    }
 
 
 }

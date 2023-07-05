@@ -1,5 +1,5 @@
 Feature: Scenario outline practice
-@GB
+
   Scenario Outline: Google search for capital cities
     Given user is on Google search page
     When user searches for the "<country>"
@@ -13,3 +13,4 @@ Feature: Scenario outline practice
     |Turkey     |Ankara|
 
 
+#scenario is using data table, and scenario outline is using Examples, scenario outline will run all steps as many times as we have examples, scenario will run ones, but step that has table will run as many times as we have options in table

@@ -9,6 +9,7 @@ import org.junit.Assume;
 import org.openqa.selenium.Keys;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class GoogleSearchStepDefs {
@@ -38,18 +39,26 @@ GoogleSearchPage googleSearchPage= new GoogleSearchPage();
 
     }
     @Then("user searches the following item")
-    public void user_searches_the_following_item(List<String> items)  {
+    public void user_searches_the_following_item(List<Map<String,String>> items)  {
+
+        for (Map<String,String> item:items){
+            System.out.println(item.get("items"));
+            googleSearchPage.searchBox.clear();
+            googleSearchPage.searchBox.sendKeys(item.get("items")+Keys.ENTER);
+
+        }
 //        items.forEach(p-> {
 //            googleSearchPage.searchBox.sendKeys(p + Keys.ENTER);
 //            Assert.assertEquals(p, Driver.getDriver().getTitle());
 //
 //    }
 
-        for (String s : items){
-            googleSearchPage.searchBox.clear();
-            googleSearchPage.searchBox.sendKeys(s + Keys.ENTER);
-            Assert.assertEquals(s + " - Google Search", Driver.getDriver().getTitle());
-        }
+//        for (String s : items){
+//            googleSearchPage.searchBox.clear();
+//            googleSearchPage.searchBox.sendKeys(s + Keys.ENTER);
+//            Assert.assertEquals(s + " - Google Search", Driver.getDriver().getTitle());
+//        }
+//
 
 }
 

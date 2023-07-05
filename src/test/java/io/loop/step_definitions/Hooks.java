@@ -1,5 +1,7 @@
 package io.loop.step_definitions;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.loop.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -19,6 +21,8 @@ public class Hooks {
             final byte [] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot,"image/png", scenario.getName());
         }
-        Driver.closeDriver();
+       Driver.closeDriver();
     }
+
+
 }
