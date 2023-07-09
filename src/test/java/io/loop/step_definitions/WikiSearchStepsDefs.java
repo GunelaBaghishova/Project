@@ -5,6 +5,7 @@ import io.loop.pages.WikiSearchPage;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.Driver;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class WikiSearchStepsDefs {
 
@@ -23,6 +24,7 @@ public class WikiSearchStepsDefs {
     public void user_clicks_wiki_search_button() {
 
         wikiSearchPage.submitButton.click();
+
 
     }
     @Then("User sees {string} is in the wiki {string}")

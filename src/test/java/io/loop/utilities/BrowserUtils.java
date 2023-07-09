@@ -1,9 +1,8 @@
 package io.loop.utilities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.cucumber.java.Scenario;
+import org.junit.Assert;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertTrue;
+
 
 public class BrowserUtils {
 
@@ -32,7 +31,7 @@ public class BrowserUtils {
                 break;
             }
         }
-        assertTrue(driver.getTitle().toLowerCase().contains(expectedTitle));
+        Assert.assertTrue(driver.getTitle().toLowerCase().contains(expectedTitle));
     }
 
     /**
@@ -55,7 +54,7 @@ public class BrowserUtils {
      * @param expectedTitle return void, assertion is implemented
      */
     public static void validateTitle(WebDriver driver, String expectedTitle) {
-        assertTrue(driver.getTitle().contains(expectedTitle));
+        Assert.assertTrue(driver.getTitle().contains(expectedTitle));
     }
 
 
@@ -165,6 +164,20 @@ public static void justWait(int seconds)  {
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
+    public static Scenario myScenario;
+
+    public static void takeScreenshot(){
+        try {
+            myScenario.log("Current url is: " + Driver.getDriver().getCurrentUrl());
+            final byte[] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            myScenario.attach(screenshot, "image/png", myScenario.getName());
+        } catch (WebDriverException wbd){
+            wbd.getMessage();
+        } catch (ClassCastException cce){
+            cce.getMessage();
+        }
     }
 
     /**

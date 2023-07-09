@@ -20,7 +20,7 @@ public class WikiSearchPage {
     @FindBy(xpath = "//h1[@id='firstHeading']/span")
     public WebElement mainHeader;
 
-    @FindBy(xpath = "//div[@class='fn']")
+    @FindBy(xpath = "//div[.='Steve Jobs']")
     public WebElement imgHeader;
 
 
