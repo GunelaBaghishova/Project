@@ -16,7 +16,10 @@ public class Driver {
 
     // making driver instance private
     //Static  -  run before everything else and also use in static methods
-    private static WebDriver driver;
+   // private static WebDriver driver;
+
+    // implemented threadLocal to achieve multiThread locally, we created pool of drivers
+    private static InheritableThreadLocal <WebDriver> driverPool = new InheritableThreadLocal<>();
 
     //  reusable method that will return the same driver instance everytime when called
 
@@ -26,30 +29,37 @@ public class Driver {
      * @author G.B
      */
     public static WebDriver getDriver(){
-        if(driver==null){
+        if(driverPool.get()==null){
             String browserType = ConfigurationReader.getProperty("browser");
             switch (browserType.toLowerCase()){
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driverPool.set(new ChromeDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    driverPool.set(new FirefoxDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "Safari":
                     WebDriverManager.safaridriver().setup();
-                    driver = new SafariDriver();
+                    driverPool.set(new SafariDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "Edge":
                     WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
+                    driverPool.set(new EdgeDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
             }
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         }
-        return driver;
+        return driverPool.get();
     }
 
     /**
@@ -57,9 +67,9 @@ public class Driver {
      * @author G.B
      */
     public static void closeDriver (){
-        if(driver!=null){
-            driver.quit();
-            driver = null;
+        if(driverPool.get()!=null){
+            driverPool.get().quit();
+            driverPool.remove();
         }
     }
 

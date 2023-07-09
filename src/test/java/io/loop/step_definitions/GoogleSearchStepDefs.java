@@ -3,7 +3,8 @@ package io.loop.step_definitions;
 import io.cucumber.java.en.*;
 import io.loop.pages.GoogleSearchPage;
 import io.loop.utilities.ConfigurationReader;
-import io.loop.utilities.Driver;
+
+import io.loop.utilities.*;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.Keys;

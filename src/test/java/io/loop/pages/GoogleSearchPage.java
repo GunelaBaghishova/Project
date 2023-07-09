@@ -14,7 +14,7 @@ public class GoogleSearchPage {
     @FindBy(name = "q")
     public WebElement searchBox;
 
-    @FindBy(xpath="//(//div[@class='FPdoLc lJ9FBc']/center/input)[1]")
+    @FindBy(xpath="(//div[@class='FPdoLc lJ9FBc']/center/input)[1]")
     public WebElement searchButton;
 
     @FindBy(xpath = "//a[@class='FLP8od']")

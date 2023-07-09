@@ -27,7 +27,7 @@ Feature: product data table practice
       | Laptops  | MacBook air       | 700 |
       | Monitors | Apple monitor 24  | 400 |
       | Monitors | ASUS Full HD      | 230 |
-   @wip
+
 
     Scenario: Verify students name in discord
       Then User should be able to see following names in their groups

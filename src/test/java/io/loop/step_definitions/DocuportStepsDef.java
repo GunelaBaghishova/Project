@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class DocuportStepsDef  {
     DocuportLoginPage docuportLoginPage = new DocuportLoginPage();
+    String username= "";
 
 
     @Given("User is on Docuport login page")
@@ -39,19 +40,26 @@ public class DocuportStepsDef  {
     }
     @Then("validate left navigate items of docuport for each user")
     public void validate_left_navigate_items_of_docuport_for_each_user(List<Map<String,String>> leftItems) {
+        for (Map<String,String>  leftItem: leftItems ) {
+            switch (username){
+                case "b1g2_client@gmail.com":
+                    System.out.println(docuportLoginPage.getLeftElement(leftItem.get("client")));
+                    Assert.assertEquals(docuportLoginPage.getLeftElement(leftItem.get("client")), leftItem.get("client"));
+                    // Assert.assertEquals("no match",loginPage.getLeftElement(leftItem.get("Client")),leftItem);
+                case "b1g2_advisor@gmail.com":
+                    Assert.assertEquals("no match",docuportLoginPage.getLeftElement(leftItem.get("Advisor")),leftItem.get("Advisor"));
+                case "b1g2_supervisor@gmail.com":
+                    Assert.assertEquals("no match",docuportLoginPage.getLeftElement(leftItem.get("Supervisor")),leftItem.get("Supervisor"));
+                case "b1g2_employee@gmail.com":
+                    Assert.assertEquals("no match",docuportLoginPage.getLeftElement(leftItem.get("Employee")),leftItem.get("Employee"));
 
-        for(Map<String,String> leftItem:leftItems){
-            Assert.assertEquals(leftItem.get("Client"),docuportLoginPage.getLeftElement(leftItem.get("Client")));
+            }
 
 
         }
 
-
-
-
-
-
-
     }
 
 }
+
+
