@@ -26,7 +26,7 @@ public class CreatingNewClientStepDefs  {
         docuportLoginPage.newClientFirstName.sendKeys("Gunel");
         docuportLoginPage.newClientLastName.sendKeys("Java");
         docuportLoginPage.creatNewClientCheckBok.click();
-        docuportLoginPage.newClientEmail.sendKeys("77Java474@gmail.com");
+        docuportLoginPage.newClientEmail.sendKeys("747Java474@gmail.com");
         docuportLoginPage.adviserDropdown.click();
         docuportLoginPage.Group2.click();
         docuportLoginPage.phoneNumber.sendKeys("7777777777");
@@ -66,7 +66,7 @@ public class CreatingNewClientStepDefs  {
     @Then("Log as a new client")
     public void log_as_a_new_client() {
 
-        docuportLoginPage.loginInput.sendKeys("77Java474@gmail.com");
+        docuportLoginPage.loginInput.sendKeys("747Java474@gmail.com");
        docuportLoginPage.passwordInput.sendKeys("77Java");
         docuportLoginPage.loginButton.click();
 

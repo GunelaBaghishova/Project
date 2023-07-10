@@ -25,8 +25,8 @@ public class Hooks {
             final byte [] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot,"image/png", scenario.getName());
         }
-       Driver.closeDriver();
-     LOG.info("...........END AUTOMATION.......LOOP ACADEMY.....");//
+//       Driver.closeDriver();
+//     LOG.info("...........END AUTOMATION.......LOOP ACADEMY.....");//
     }
 
 
