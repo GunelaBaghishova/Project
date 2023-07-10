@@ -18,6 +18,8 @@ public class LoginStepDefs {
     public void user_enters_username_for_client() {
         loginPage.usernameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
  }
+
+
     @When("user enters password for client")
     public void user_enters_password_for_client() {
        loginPage.passwordInput.sendKeys((DocuportConstants.PASSWORD));
@@ -81,6 +83,8 @@ public class LoginStepDefs {
   loginPage.loginDocuport(credentials.get("username"),credentials.get("password"));
 
     }
+
+
 
 
 }
