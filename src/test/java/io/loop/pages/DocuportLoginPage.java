@@ -85,37 +85,29 @@ public class DocuportLoginPage extends DocuportBasePage {
 
     @FindBy(xpath = "//label[.='Address line 2']/following-sibling::input")
     public WebElement addressLine2;
-
     @FindBy(xpath = "//label[.='Zip code']/following-sibling::input")
     public WebElement city;
-
     @FindBy(xpath = "(//input[@autocomplete ='off'])[5]")
     public WebElement state;
     @FindBy(xpath = "//div[.='California']/div/div")
     public WebElement selectState;
     @FindBy(xpath = "//label[.='Zip code']/following-sibling::input")
     public WebElement zipcode;
-
     @FindBy(xpath = "//span[.=' Save ']")
     public WebElement SaveFinish;
-
     @FindBy(xpath = "//span[.='Batch1 Group2']")
     public WebElement batch;
-
     @FindBy(xpath = "//span[.='Log out']")
     public WebElement logOut;
+    @FindBy(xpath = "(//i[@class='v-icon notranslate mdi mdi-checkbox-blank-outline theme--light'])[1]")
+    public WebElement selectService;
+     @FindBy (xpath = "//span[contains(text(),'Gunel Java has been updated successfully')]")
+     public WebElement successMsg;
 
+    @FindBy(xpath = "//span[contains(normalize-space(),'Continue')]")
+    public WebElement continueButton;
 
-
-
-
-
-
-
-    public DocuportLoginPage(){
+     public DocuportLoginPage(){
         PageFactory.initElements(Driver.getDriver(),this);
-
-
-
-    }
+     }
 }

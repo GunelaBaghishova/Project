@@ -4,7 +4,7 @@ import io.loop.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class LoginPage {
+public class LoginPage extends DocuportBasePage{
     @FindBy(xpath = "//input[@id='input-14']")
     public WebElement usernameInput;
 
